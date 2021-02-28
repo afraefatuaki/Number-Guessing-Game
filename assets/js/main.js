@@ -3,7 +3,7 @@ const number5 = document.getElementById('number5');
 const number6 = document.getElementById('number6');
 let custom = document.getElementById('custom');
 const customInput = document.getElementById('customInput');
-let theGuessedNumber = document.getElementById('theGuessedNumber');
+
 let roundsContainer = document.getElementById('roundsContainer');
 
 let totalNumber = document.getElementById('roundTotal');
@@ -14,7 +14,7 @@ let results = document.getElementById('results');
 let random = randomNumber()
 
 let total;
-let counting;
+let counting = 0;
 
 function chooseRound() {
     if (number4.checked) {
@@ -26,37 +26,44 @@ function chooseRound() {
     } else {
         total = customInput.value
     }
-    counting = total;
+
 }
+
+chooseRound()
 
 function guess() {
 
-    totalNumber.innerHTML = total
-    countingNumber.innerHTML = counting
-
-    if (counting === 0) {
-        results.innerHTML = "Game Over"
-
-    } else {
+    if (counting < total) {
         console.log("keep playing")
         compareNumber(random, theGuessedNumber.value)
+        console.log(`Computer ${random} User ${theGuessedNumber.value} `)
+        counting++
+    } else if (counting == total) {
+        results.innerHTML = "Game Over"
     }
-    counting--
 
+    totalNumber.innerHTML = total
+    countingNumber.innerHTML = counting
 }
+
 
 function randomNumber() {
     return Math.floor(Math.random() * 100);
 }
 
+
 function compareNumber(random, userNum) {
-    if (random === userNum) {
+    if (random == userNum) {
         results.innerHTML = "You're a winner"
     } else if (random < userNum) {
         results.innerHTML = `You need to guess lower than ${userNum}, Try again.`
     } else if (random > userNum) {
         results.innerHTML = `You need to guess higher  than ${userNum}, Try again.`
     }
+}
+
+function reloadThePage() {
+    window.location.reload();
 }
 
 
