@@ -3,16 +3,11 @@ const number5 = document.getElementById('number5');
 const number6 = document.getElementById('number6');
 let custom = document.getElementById('custom');
 const customInput = document.getElementById('customInput');
-
 let roundsContainer = document.getElementById('roundsContainer');
-
 let totalNumber = document.getElementById('roundTotal');
 let countingNumber = document.getElementById('roundCounting');
-
 let results = document.getElementById('results');
-
 let random = randomNumber()
-
 let total;
 let counting = 0;
 
@@ -28,7 +23,6 @@ function chooseRound() {
     }
 
 }
-
 chooseRound()
 
 function guess() {
@@ -36,7 +30,7 @@ function guess() {
     if (counting < total) {
         console.log("keep playing")
         compareNumber(random, theGuessedNumber.value)
-        console.log(`Computer ${random} User ${theGuessedNumber.value} `)
+        //console.log(`Computer ${random} User ${theGuessedNumber.value} `)
         counting++
     } else if (counting == total) {
         results.innerHTML = "Game Over"
@@ -46,11 +40,9 @@ function guess() {
     countingNumber.innerHTML = counting
 }
 
-
 function randomNumber() {
     return Math.floor(Math.random() * 100);
 }
-
 
 function compareNumber(random, userNum) {
     if (random == userNum) {
