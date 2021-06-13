@@ -1,53 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Guessing Game</title>
+    <title>Number Guesser</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
 <body>
-    <h1>Number Gessing Game 1-100</h1>
-    <section id="roundsContainer">
+    <div class="game-container">
+        <header>
+            <h1>Number Guesser!</h1>
+        </header>
 
-        <h2 id="title">Guess a nummber to be a winner!</h2>
-        <input type="radio" id="number4" name="rounds" value="number4" onchange="chooseRound()">
-        <label for="number4">4</label><br>
+        <div class="rounds">
+            <p class="round-label">Round <span id="round-number">1</span></p>
+            <p class="guess-label">Target Number: <span id="target-number">?</span></p>
+        </div>
 
-        <input type="radio" id="number5" name="rounds" value="number5" onchange="chooseRound()">
-        <label for="number5">5</label><br>
+        <div class="guessing-area">
+            <div class="guess computer-guess">
+                <div class="guess-title">
+                    <p class="guess-label">Computer</p>
+                    <p class="score-label">Score: <span id="computer-score">0</span></p>
+                </div>
+                <p id="computer-guess">?</p>
+                <p class="winning-text" id="computer-wins"></p>
+            </div>
+            <div class="guess human-guess">
+                <div class="guess-title">
+                    <p class="guess-label">You</p>
+                    <p class="score-label">Score: <span id="human-score">0</span></p>
+                </div>
+                <input type="number" id="human-guess" min=0 max=9 value=0>
+                <div class="number-controls">
+                    <button class="number-control left" id="subtract" disabled>-</button>
+                    <button class="number-control right" id="add">+</button>
+                </div>
+                <button class="button" id="guess">Make a Guess</button>
+            </div>
+        </div>
 
-        <input type="radio" id="number6" name="rounds" value="number6" onchange="chooseRound()">
-        <label for="number6">6</label><br>
+        <div class="next-round-container">
+            <button class="button" id="next-round" disabled>Next Round</button>
+        </div>
 
-        <input type="radio" id="custom" name="rounds" value="custom" onchange="chooseRound()">
-        <label for="custom">Custom</label>
-        <input type="number" name="" id="customInput">
-
-    </section>
-
-    <div id="roundsContainer">
-        <span id="roundCounting">0</span>/<span id="roundTotal">0</span>
     </div>
 
-    <br><br>
+    <div class="instructions">
+        <div class="instruction">
+            <h3>Step 1</h3>
+            <p>Input a number between 0 and 9</p>
+        </div>
+        <div class="instruction">
+            <h3>Step 2</h3>
+            <p>Click "Make a Guess" to submit your guess and see who won the round.</p>
+        </div>
+        <div class="instruction">
+            <h3>Step 3</h3>
+            <p>Click "Next Round" to play again.</p>
+        </div>
+    </div>
 
-    <section>
-
-        <form action="/action_page.php">
-            <input type="number" id="theGuessedNumber" name="quantity" min="1" max="3">
-            <button type="button" onclick="guess()">Play</button>
-        </form>
-
-        <div id="results">Results</div>
-        <button type="button" onclick="reloadThePage()">restart!</button>
-
-    </section>
-    <script src="assets/js/main.js"></script>
+    <script src="./script.js"></script>
+    <script src="./game.js"></script>
 </body>
 
 </html>
